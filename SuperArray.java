@@ -21,11 +21,11 @@ public class SuperArray{
     return false;
   }
 
-  public boolean add(String str){
+  public boolean add(String element){
     if (data.length >= size){
       resize();
     }
-    data[size] = str;
+    data[size] = element;
     size ++;
     return true;
   }
@@ -73,7 +73,7 @@ public class SuperArray{
     }
   }
 
-  public String set(int index, String str){
+  public String set(int index, String element){
     if (data.length >= size){
       resize();
     }
@@ -81,7 +81,7 @@ public class SuperArray{
       return null;
     }else{
       String x = data[index];
-      data[index] = str;
+      data[index] = element;
       return x;
     }
 
@@ -112,7 +112,7 @@ public class SuperArray{
     return -1;
   }
 
-  public void add(int index, String str){
+  public void add(int index, String element){
     if (data.length + 1 >= size){
       resize();
     }
@@ -123,7 +123,7 @@ public class SuperArray{
       for (int x = 0; x < index; x++){
         newarr[x] = data[x];
       }
-      newarr[index] = str;
+      newarr[index] = element;
       for (int x = index + 1; x < size; x++){
         newarr[x] = data[x];
       }
@@ -148,4 +148,6 @@ public class SuperArray{
       data = newarr;
     }
   }
+
+  public boolean remove(String element)
 }
