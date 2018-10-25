@@ -80,4 +80,21 @@ public class SuperArray{
 			newarr[x] = data[x];
     data = newarr;
   }
+  public boolean contains(String target){
+    for (int x = 0; x < data.length; x++){
+      if (target == data[x]){
+        return true;
+      }
+    }
+    return false;
+  }
+  public int indexOf(String target){
+    for (int x = 0; x < data.length; x++){
+      if (target == data[x]){
+        return x;
+      }
+    }
+    return -1;
+  }
+  
 }
