@@ -149,5 +149,28 @@ public class SuperArray{
     }
   }
 
-  public boolean remove(String element)
+  public boolean remove(String element){
+    if (data.length >= size){
+      resize();
+    }
+    int counter;
+    for (int x = 0; x < data.length; x ++){
+      if (element = data[x]){
+        counter ++;
+      }
+    }
+    if (counter == 0){
+      return false;
+    }else{
+      String[] newarr = new String[data.length];
+      for (int x = 0; x < data.length; x++){
+        newarr[x] = data[x];
+      }
+      for (int x = index + 1; x < size; x++){
+        newarr[x - 1] = data[x];
+      }
+      data = newarr;
+      return true;
+    }
+  }
 }
