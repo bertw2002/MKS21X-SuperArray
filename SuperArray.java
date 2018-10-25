@@ -58,6 +58,9 @@ public class SuperArray{
     return "[" + str + "]";
   }
   public String get(int index){
+    if (data.length >= size){
+      resize();
+    }
     if (index < 0 || index >= size){
       return null;
     }else{
@@ -65,6 +68,9 @@ public class SuperArray{
     }
   }
   public String set(int index, String str){
+    if (data.length >= size){
+      resize();
+    }
     if (index < 0 || index >= size){
       return null;
     }else{
@@ -96,5 +102,22 @@ public class SuperArray{
     }
     return -1;
   }
-  
+  public void add(int index, String str){
+    if (data.length + 1 >= size){
+      resize();
+    }
+    if ((index < 0 || index > size){
+      return null;
+    }else{
+      String[] newarr = new String[data.length];
+      for (int x = 0; x < index; x++){
+        newarr[x] = data[x];
+      }
+      newarr[index] = str;
+      for (int x = index + 1; x < size; x++){
+        newarr[x] = data[x];
+      }
+      data = newarr;
+    }
+  }
 }
