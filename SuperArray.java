@@ -1,6 +1,6 @@
 public class SuperArray{
   private String[] data;
-  private int size;
+  private int size = 0;
   public SuperArray(){
     data = new String[10];
   }
@@ -16,25 +16,46 @@ public class SuperArray{
     }
     return false;
   }
+
   public boolean add(String str){
+    if (data.length >= size){
+      resize();
+    }
     data[size] = str;
+    size ++;
     return true;
   }
+
+
   public String toString(){
-    String str = "[]";
+    String str = "";
     for (int x = 0; x < size; x++){
-      str += data[x];
+      if (x != data.length - 1){
+        str = str + data[x] + ",";
+      }else{
+        str = str + data[x];
+      }
     }
-    str += "]";
-    return str;
+    return "[" + str + "]";
   }
   public String toStringDebug(){
-    String str = "[]";
+    String str = "";
     for (int x = 0; x < data.length; x++){
-      str += data[x];
+      if (x != data.length - 1){
+        if (x > size - 1){
+          str = str + "null,";
+        }else{
+          str = str + data[x] + ",";
+        }
+      }else{
+        if (x > size - 1){
+          str = str + "null";
+        }else{
+          str = str + data[x];
+        }
+      }
     }
-    str += "]";
-    return str;
+    return "[" + str + "]";
   }
   public String get(int index){
     if (index < 0 || index >= size){
@@ -53,9 +74,10 @@ public class SuperArray{
     }
 
   }
-  /*
   private void resize(){
-
+    String[] newarr = new String[data.length * 2];
+    for( int x = 0; x < data.length; x++ )
+			newarr[x] = data[x];
+    data = newarr;
   }
-  */
 }
