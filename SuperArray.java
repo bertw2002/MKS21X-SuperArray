@@ -1,4 +1,4 @@
-public class SuperArrar{
+public class SuperArray{
   private String[] data;
   private int size;
   public SuperArray(){
@@ -11,19 +11,17 @@ public class SuperArrar{
     return size;
   }
   public boolean isEmpty(){
-    if (size = 0){
+    if (size == 0){
       return true;
     }
     return false;
   }
   public boolean add(String str){
-    if (size != 10){
-      size ++;
-    }
-    data[size - 1] = str;
+    data[size] = str;
+    return true;
   }
   public String toString(){
-    String str = "[]"
+    String str = "[]";
     for (int x = 0; x < size; x++){
       str += data[x];
     }
@@ -31,7 +29,7 @@ public class SuperArrar{
     return str;
   }
   public String toStringDebug(){
-    String str = "[]"
+    String str = "[]";
     for (int x = 0; x < data.length; x++){
       str += data[x];
     }
@@ -42,14 +40,22 @@ public class SuperArrar{
     if (index < 0 || index >= size){
       return null;
     }else{
-      return data.index;
+      return data[index];
     }
   }
   public String set(int index, String str){
     if (index < 0 || index >= size){
       return null;
     }else{
-      data.
+      String x = data[index];
+      data[index] = str;
+      return x;
     }
+
   }
+  /*
+  private void resize(){
+
+  }
+  */
 }
