@@ -67,7 +67,7 @@ public class SuperArray{
       resize();
     }
     if (index < 0 || index >= size){
-      System.out.println("index out of range");
+      System.out.print("error -> ");
       return null;
     }else{
       return data[index];
@@ -79,7 +79,7 @@ public class SuperArray{
       resize();
     }
     if (index < 0 || index >= size){
-      System.out.println("index out of range");
+      System.out.print("error -> ");
       return null;
     }else{
       String x = data[index];
@@ -98,7 +98,7 @@ public class SuperArray{
 
   public boolean contains(String target){
     for (int x = 0; x < data.length; x++){
-      if (target == data[x]){
+      if (target.equals(data[x])){
         return true;
       }
     }
@@ -107,7 +107,15 @@ public class SuperArray{
 
   public int indexOf(String target){
     for (int x = 0; x < data.length; x++){
-      if (target == data[x]){
+      if (target.equals(data[x])){
+        return x;
+      }
+    }
+    return -1;
+  }
+  public int lastIndexOf(String element){
+    for (int x = size() - 1; x > - 1; x--) {
+      if (data[x].equals(element)) {
         return x;
       }
     }
@@ -121,14 +129,15 @@ public class SuperArray{
     if (index < 0 || index >= size){
       System.out.println("error");
     }else{
+      size ++;
       String[] newarr = new String[data.length];
       for (int x = 0; x < index; x++){
         newarr[x] = data[x];
       }
-      newarr[index] = element;
       for (int x = index + 1; x < size; x++){
-        newarr[x] = data[x];
+        newarr[x] = data[x - 1];
       }
+      newarr[index] = element;
       data = newarr;
     }
   }
@@ -137,8 +146,9 @@ public class SuperArray{
     if (data.length <= size){
       resize();
     }
+    String var = data[index];
     if (index < 0 || index >= size){
-      System.out.println("index out of range");
+      System.out.print("error -> ");
       return null;
     }else{
       String[] newarr = new String[data.length];
@@ -148,8 +158,9 @@ public class SuperArray{
       for (int x = index + 1; x < size; x++){
         newarr[x - 1] = data[x];
       }
+      size --;
       data = newarr;
-      return data[index];
+      return var;
     }
   }
 
@@ -159,7 +170,7 @@ public class SuperArray{
     }
     int place = 0;
     for (int x = 0; x < data.length; x ++){
-      if (element == data[x]){
+      if (element.equals(data[x])){
         place = x;
         break;
       }
@@ -167,6 +178,7 @@ public class SuperArray{
     if (place == 0){
       return false;
     }else{
+
       String[] newarr = new String[data.length];
       for (int x = 0; x < place; x++){
         newarr[x] = data[x];
@@ -174,6 +186,7 @@ public class SuperArray{
       for (int x = place + 1; x < size; x++){
         newarr[x - 1] = data[x];
       }
+      size --;
       data = newarr;
       return true;
     }
