@@ -22,7 +22,7 @@ public class SuperArray{
   }
 
   public boolean add(String element){
-    if (data.length >= size){
+    if (data.length <= size){
       resize();
     }
     data[size] = element;
@@ -33,7 +33,7 @@ public class SuperArray{
   public String toString(){
     String str = "";
     for (int x = 0; x < size; x++){
-      if (x != data.length - 1){
+      if (x != size - 1){
         str = str + data[x] + ",";
       }else{
         str = str + data[x];
@@ -63,10 +63,11 @@ public class SuperArray{
   }
 
   public String get(int index){
-    if (data.length >= size){
+    if (data.length <= size){
       resize();
     }
     if (index < 0 || index >= size){
+      System.out.println("index out of range");
       return null;
     }else{
       return data[index];
@@ -74,10 +75,11 @@ public class SuperArray{
   }
 
   public String set(int index, String element){
-    if (data.length >= size){
+    if (data.length <= size){
       resize();
     }
     if (index < 0 || index >= size){
+      System.out.println("index out of range");
       return null;
     }else{
       String x = data[index];
@@ -113,11 +115,11 @@ public class SuperArray{
   }
 
   public void add(int index, String element){
-    if (data.length + 1 >= size){
+    if (data.length <= size + 1){
       resize();
     }
-    if ((index < 0 || index > size){
-      return null;
+    if (index < 0 || index >= size){
+      System.out.println("error");
     }else{
       String[] newarr = new String[data.length];
       for (int x = 0; x < index; x++){
@@ -132,10 +134,11 @@ public class SuperArray{
   }
 
   public String remove(int index){
-    if (data.length >= size){
+    if (data.length <= size){
       resize();
     }
-    if (index < 0 || index >= size{
+    if (index < 0 || index >= size){
+      System.out.println("index out of range");
       return null;
     }else{
       String[] newarr = new String[data.length];
@@ -146,27 +149,29 @@ public class SuperArray{
         newarr[x - 1] = data[x];
       }
       data = newarr;
+      return data[index];
     }
   }
 
   public boolean remove(String element){
-    if (data.length >= size){
+    if (data.length <= size){
       resize();
     }
-    int counter;
+    int place = 0;
     for (int x = 0; x < data.length; x ++){
-      if (element = data[x]){
-        counter ++;
+      if (element == data[x]){
+        place = x;
+        break;
       }
     }
-    if (counter == 0){
+    if (place == 0){
       return false;
     }else{
       String[] newarr = new String[data.length];
-      for (int x = 0; x < data.length; x++){
+      for (int x = 0; x < place; x++){
         newarr[x] = data[x];
       }
-      for (int x = index + 1; x < size; x++){
+      for (int x = place + 1; x < size; x++){
         newarr[x - 1] = data[x];
       }
       data = newarr;
